@@ -15,13 +15,13 @@ return(
     {/* Visitor Routes */}
     <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/jobs/:id" element={<JobDetailsPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/apply/:jobId" element={<Apply />} />
+          <Route path="home" element={<Home />} />
+          <Route path="jobs" element={<Jobs />} />
+          <Route path="jobs/:id" element={<JobDetailsPage />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="apply/:jobId" element={<Apply />} />
     </Route>
    </Routes>
 );
