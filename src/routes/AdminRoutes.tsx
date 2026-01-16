@@ -5,6 +5,7 @@ import ManageJobs from "../pages/admin/ManageJobs";
 import ManageUsers from "../pages/admin/ManageUsers";
 import Settings from "../pages/admin/Settings";
 import Approvals from "../pages/admin/Approvals";
+import Applicants from "../pages/admin/Applicants";
 
 
 const AdminRoutes = () => {
@@ -17,6 +18,7 @@ const AdminRoutes = () => {
       <Route path="users" element={<ManageUsers/>}/>
       <Route path="approvals" element={<Approvals/>}/>
       <Route path="settings" element={<Settings/>}/>
+      <Route path="applicants" element={<Applicants/>}/>
       </Route>
     </Routes>
   );

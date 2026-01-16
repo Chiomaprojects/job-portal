@@ -3,6 +3,7 @@ import AdminRoutes from "./AdminRoutes";
 import NotFound from "../pages/notfound/NotFound";
 import VisitorRoutes from "./VisitorRoutes";
 
+
 const AppRoutes = () => {
 return(
   <Routes>
