@@ -6,6 +6,8 @@ import ManageUsers from "../pages/admin/ManageUsers";
 import Settings from "../pages/admin/Settings";
 import Approvals from "../pages/admin/Approvals";
 import Applicants from "../pages/admin/Applicants";
+import CreateJob from "../components/admin/CreateJob";
+import EditJob from "../components/admin/EditJob";
 
 
 const AdminRoutes = () => {
@@ -15,6 +17,8 @@ const AdminRoutes = () => {
        <Route path="/*" element={<Dashboard />} />
       <Route path="dashboard" element={<Dashboard/>}/>
       <Route path="jobs" element={<ManageJobs/>}/>
+      <Route path="jobs/create" element={<CreateJob />} />
+      <Route path="jobs/edit/:id" element={<EditJob />} />
       <Route path="users" element={<ManageUsers/>}/>
       <Route path="approvals" element={<Approvals/>}/>
       <Route path="settings" element={<Settings/>}/>

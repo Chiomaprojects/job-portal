@@ -1,6 +1,6 @@
 const Settings = () => {
   return (
-    <div className="space-y-10 max-w-4xl">
+    <div className="container mx-auto px-4 py-8">
       {/* PAGE HEADER */}
       <div>
         <h1 className="text-2xl font-bold text-gray-800">

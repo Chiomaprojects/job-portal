@@ -1,8 +1,9 @@
+import type { FC } from "react"; 
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 
-const Profile = () => {
-  const user = useSelector((state: RootState) => state.auth.user)
+const Profile: FC = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
   return (
     <div className="pt-5 px-7 mx-auto max-w-7xl">
         <h1 className="text-2xl font-bold mb-6">

@@ -1,24 +1,32 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { loginSuccess } from "../../store/authSlice";
+import { useState } from "react"
+import { login } from "../../store/authSlice";
+import type { AppDispatch, RootState } from "../../store/store";
+
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+   
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
 
-    // mock login (API later)
-    dispatch(
-      loginSuccess({
-        id: "1",
-        name: "John Doe",
-        email: "john@example.com",
-      })
-    );
+  const result = await dispatch(login({email, password}));
 
-    navigate("/profile");
+  if (login.fulfilled.match(result)) {
+    const role = result.payload.role;
+
+    if (role === "admin") {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/profile");
+    }
+  }
   };
 
   return (
@@ -28,11 +36,15 @@ const LoginForm = () => {
     >
       <h1 className="text-2xl font-bold text-center">Login</h1>
 
+      {error && <p className="text-red-500">{error}</p>}
+
       <input
         type="email"
         required
         placeholder="Email"
         className="w-full border p-3 rounded-lg"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
@@ -40,15 +52,18 @@ const LoginForm = () => {
         required
         placeholder="Password"
         className="w-full border p-3 rounded-lg mb-2"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <h3 className="pl-60 cursor-pointer">Forgot password?</h3>
 
       <button
         type="submit"
+        disabled={loading}
         className="w-full !bg-blue-600 text-white py-3 rounded-lg !hover:bg-blue-700"
       >
-        Login
+        {loading ? "Logging in..." : "Login"}
       </button>
 
       <h3 className="text-center mt-10 mb-0 text-xl">dont have an account? <Link to="/signup"

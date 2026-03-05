@@ -1,16 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../store/authSlice";
+import type { AppDispatch } from "../../store/store";
 
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const[username, setUsername] = useState("");
+  const[email, setEmail] = useState("");
+  const[password, setPassword] = useState("");
+  const[confirmPassword, setConfirmPassword] = useState("");  
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/login");
+    //  
+    try {
+      // wait for thunk and throw if rejected
+      await dispatch(register({ username, email, password })).unwrap();
+      navigate("/login");
+    } catch (err) {
+      // err contains server validation details (inspect in console or DevTools)
+      console.error("Registration failed:", err);
+    } 
   }
-    
-    
+       
   return(
     <form 
+    onSubmit={handleSubmit}
     className="bg-white shadow p-8 rounded-xl space-y-5">
         <h1 className="text-2xl font-bold text-center">Create Account</h1>
         
@@ -19,6 +37,8 @@ const SignUpForm = () => {
         type="text"
         required
         className="w-full border p-3 rounded-lg"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)} 
         />
 
         <input
@@ -26,6 +46,8 @@ const SignUpForm = () => {
         type="email"
         required
         className="w-full border p-3 rounded-lg"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}  
         />
 
         <input
@@ -33,6 +55,8 @@ const SignUpForm = () => {
         type="password"
         required
         className="w-full border p-3 rounded-lg"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)} 
         />
 
         <input
@@ -40,6 +64,8 @@ const SignUpForm = () => {
         type="password"
         required
         className="w-full border p-3 rounded-lg"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}  
         />
 
         <input 
