@@ -15,7 +15,10 @@ const initialState: AuthState = {
   error:null,
 };
 
-export const login = createAsyncThunk<User, { email: string; password: string }, { rejectValue:string }>(
+export const login = createAsyncThunk<
+User, 
+{ email: string; password: string }, 
+{ rejectValue:string }>(
   "auth/login",
   async ({ email, password }, thunkAPI) => {
 try {
@@ -76,6 +79,7 @@ const authSlice = createSlice({
     .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        console.log("Login successful:", action.payload);
     })    
     .addCase(register.pending, (state) => {
       state.loading = true;

@@ -38,30 +38,42 @@ const LoginForm = () => {
 
       {error && <p className="text-red-500">{error}</p>}
 
-      <input
-        type="email"
-        required
-        placeholder="Email"
-        className="w-full border p-3 rounded-lg"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          required
+          placeholder="Email"
+          className="w-full border p-3 rounded-lg"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
 
-      <input
-        type="password"
-        required
-        placeholder="Password"
-        className="w-full border p-3 rounded-lg mb-2"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2 mt-4">
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          required
+          placeholder="Password"
+          className="w-full border p-3 rounded-lg mb-2"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
 
       <h3 className="pl-60 cursor-pointer">Forgot password?</h3>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full !bg-blue-600 text-white py-3 rounded-lg !hover:bg-blue-700"
+        className="w-full bg-blue-600 text-white py-3 rounded-lg !hover:bg-blue-700"
       >
         {loading ? "Logging in..." : "Login"}
       </button>

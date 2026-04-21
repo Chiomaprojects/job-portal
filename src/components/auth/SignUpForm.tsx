@@ -18,7 +18,7 @@ const SignUpForm = () => {
     //  
     try {
       // wait for thunk and throw if rejected
-      await dispatch(register({ username, email, password })).unwrap();
+      await dispatch(register({ name: username, email, password })).unwrap();
       navigate("/login");
     } catch (err) {
       // err contains server validation details (inspect in console or DevTools)

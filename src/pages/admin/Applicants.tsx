@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 import { useState } from "react";
+import Counter from "../../RoughWork/Counter";
 
 
 
@@ -16,9 +17,9 @@ const Applicants = () => {
   const jobApplications = applications.filter(
     (app) => app.jobId === selectedJobId);
 
-
   return(
     <div className="container mx-auto px-4">
+      <Counter />
        <h1 className="text-2xl font-bold mb-6">Applicants</h1>
      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
        <div className="bg-white rounded-xl shadow p-4">

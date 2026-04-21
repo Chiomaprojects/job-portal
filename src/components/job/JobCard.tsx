@@ -12,7 +12,7 @@ interface JobCardProps {
 
 const JobCard = ({ id, title, company, location, type, salary}: JobCardProps) => {
 return(
- <div className="mx-4 border rounded-lg p-5 shadow-lg !shadow-blue-950 bg- white hover:!shadow-blue-950 transition mb-4">
+ <div className="mx-4 border rounded-lg p-5 shadow-lg shadow-blue-950 bg- white hover:shadow-blue-950 transition mb-4">
   <h3 className="text-lg font-bold text-blue-600">{title}</h3>
   <p className="text-gray-600 mt-1">{company}</p>
 

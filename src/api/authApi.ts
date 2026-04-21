@@ -13,7 +13,7 @@ export const logoutUser = async (): Promise<void> => {
 };    
 
 export const registerUser = async (userData: register): Promise<User> => {
-  const role = userData.email === "admin@example.com" ? "admin" : "visitor";
+  const role: 'admin' | 'visitor' = userData.email === "admin@example.com" ? "admin" : "visitor";
   const user: User = {
     id: Date.now().toString(),
     name: userData.name,
